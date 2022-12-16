@@ -30,6 +30,13 @@ public class Challenge
         {
             rows.Add(new List<string> { "" });
         }
+
+        void handleAddColum()
+        {
+            columns.Add(currentString);
+        }
+
+
         for (int i = 0; i < csv.Length; i++)
         {
 
@@ -70,8 +77,6 @@ public class Challenge
                 continue;
             }
 
-
-
             currentString += currentChar;
             if (i + 1 == csv.Length)
             {
@@ -82,11 +87,6 @@ public class Challenge
         }
         return rows;
     }
-
-    // private static void HandleAddColumnAndRow(string currentString, List<List<string>> rows, List<string> columns)
-    // {
-
-    // }
 
     private static string HandleQuotes(string currentString, string quote)
     {
@@ -100,27 +100,6 @@ public class Challenge
 
         bool handledAlternateQuotes = false;
 
-        // if (!handledAlternateQuotes && currentString.Contains("\"\""))
-        // {
-        //     handledAlternateQuotes = true;
-        //     currentString = currentString.Replace("\"\"", "\"");
-        // }
-        // if (!handledAlternateQuotes && currentString.Contains("\'\'"))
-        // {
-        //     handledAlternateQuotes = true;
-        //     currentString = currentString.Replace("\'\'", "\'");
-        // }
-
-        // if (!handledAlternateQuotes && currentString.Contains("\""))
-        // {
-        //     handledAlternateQuotes = true;
-        //     currentString = currentString.Replace("\"", "\"\"");
-        // }
-        // if (!handledAlternateQuotes && currentString.Contains("\'"))
-        // {
-        //     handledAlternateQuotes = true;
-        //     currentString = currentString.Replace("\'", "\'\'");
-        // }
 
         if (!handledAlternateQuotes && currentString.Contains(string.Concat(quote, quote)))
         {
@@ -136,50 +115,5 @@ public class Challenge
 
         return currentString;
     }
-
-    // public static List<List<string>> ParseCsvOld(
-    //     string csv,
-    //     string separator,
-    //     string quote
-    // )
-    // {
-    //     quote = string.IsNullOrEmpty(quote) ? "\"" : quote;
-    //     Console.WriteLine($"csv: {csv} \n");
-    //     Console.WriteLine($"separator: {separator} \n");
-    //     Console.WriteLine($"quote: {quote} \n");
-
-    //     string[] delimiters = new[] { "\n" };
-    //     string[] lines = csv.Split(Environment.NewLine);
-
-    //     List<List<string>> result = new List<List<string>>();
-
-    //     foreach (var line in lines)
-    //     {
-    //         string[] columns = line.Split(string.IsNullOrEmpty(separator) ? "," : separator);
-    //         for (int index = 0; index < columns.Length; index++)
-    //         {
-
-    //             var currentCol = columns[index];
-
-
-    //             var indexFirstQuote = currentCol.IndexOf(quote);
-    //             if (indexFirstQuote >= 0)
-    //                 currentCol.Remove(indexFirstQuote, quote.Length).Insert(indexFirstQuote, "");
-
-    //             var indexLastQuote = currentCol.LastIndexOf(quote);
-    //             if (indexLastQuote >= 0)
-    //                 currentCol.Remove(indexLastQuote, quote.Length).Insert(indexLastQuote, "");
-
-    //             Console.WriteLine($"currentCol: {currentCol} \n");
-    //             currentCol = currentCol.Replace(quote, "");
-
-    //             columns[index] = currentCol;//columns[index].Replace(quote, "");
-    //         }
-    //         result.Add(columns.ToList());
-    //     }
-    //     return result;
-    // }
-
-
 
 }
