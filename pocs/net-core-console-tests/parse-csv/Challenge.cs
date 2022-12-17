@@ -12,9 +12,6 @@ public class Challenge
      string quote
  )
     {
-        Console.WriteLine($"csv: {JsonSerializer.Serialize(csv)} \n");
-        Console.WriteLine($"separator: {JsonSerializer.Serialize(separator)} \n");
-        Console.WriteLine($"quote: {JsonSerializer.Serialize(quote)} \n");
 
         quote = string.IsNullOrEmpty(quote) ? "\"" : quote;
         separator = string.IsNullOrEmpty(separator) ? "," : separator;
@@ -30,12 +27,6 @@ public class Challenge
         {
             rows.Add(new List<string> { "" });
         }
-
-        void handleAddColum()
-        {
-            columns.Add(currentString);
-        }
-
 
         for (int i = 0; i < csv.Length; i++)
         {
@@ -66,9 +57,6 @@ public class Challenge
                 currentString = string.Empty;
                 continue;
             }
-
-
-
 
             if (!hasQuoteInValue && currentChar.ToString() == separator)
             {
