@@ -10,7 +10,7 @@ void Main()
         Name = "teste"
     };
 
-    ClasseDomainDto dto = (ClasseDomainDto)classedomain;
+    ClasseDomainDto dto = classedomain;
 
     Console.WriteLine(JsonSerializer.Serialize(dto));
 
@@ -29,7 +29,15 @@ public class ClasseDomainDto
     public int Id { get; set; }
     public string Name { get; set; }
 
-    public static explicit operator ClasseDomainDto(Classedomain model)
+    // public static explicit operator ClasseDomainDto(Classedomain model)
+    // {
+    //     return new ClasseDomainDto
+    //     {
+    //         Id = model.Id,
+    //         Name = model.Name,
+    //     };
+    // }
+    public static implicit operator ClasseDomainDto(Classedomain model)
     {
         return new ClasseDomainDto
         {
